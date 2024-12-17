@@ -4,7 +4,7 @@
 
  <a href='https://lizb6626.github.io/IDArb/'><img src='https://img.shields.io/badge/Project-Page-Green'></a> &nbsp;
  <a href='https://huggingface.co/lizb6626/IDArb'><img src='https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Dataset-blue'></a> &nbsp;
- <!-- <a href='https://lizb6626.github.io/IDArb/'><img src='https://img.shields.io/badge/arXiv-2412.07759-b31b1b.svg'></a> &nbsp; -->
+ <a href='https://arxiv.org/abs/2412.12083'><img src='https://img.shields.io/badge/arXiv-2412.12083-b31b1b.svg'></a> &nbsp;
 
 **[Zhibing Li<sup>1</sup>](https://lizb6626.github.io/), 
 [Tong Wu<sup>1 &dagger;</sup>](https://wutong16.github.io/), 
@@ -67,4 +67,12 @@ This project relies on many amazing repositories. Thanks to the authors for shar
 - [Stanford-ORB](https://github.com/StanfordORB/Stanford-ORB)
 - [NeRD](https://github.com/cgtuebingen/NeRD-Neural-Reflectance-Decomposition/tree/master)
 
-<!-- ## BibTex -->
+## Citation
+```
+@article{li2024idarb,
+  author    = {Li, Zhibing and Wu, Tong and Tan, Jing and Zhang, Mengchen and Wang, Jiaqi and Lin, Dahua},
+  title     = {IDArb: Intrinsic Decomposition for Arbitrary Number of Input Views and Illuminations},
+  journal   = {arXiv preprint arXiv:2412.12083},
+  year      = {2024},
+}
+```
