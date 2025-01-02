@@ -24,7 +24,12 @@
 https://github.com/user-attachments/assets/b7305499-e596-4706-b888-5d3a29aca7b6
 
 - [x] Release inference code and pretrained checkpoints.
+- [x] Release training dataset.
 - [ ] Release training code.
+
+## News
+
+- [12.24] We have released the complete [dataset](https://huggingface.co/lizb6626/IDArb) and rendering script.
 
 ## Install
 

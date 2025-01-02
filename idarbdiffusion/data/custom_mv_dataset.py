@@ -127,7 +127,7 @@ class CustomMVDataset(Dataset):
         frames = cfg['frames']
         frames = frames[:self.num_views]
 
-        mv_img_in, mv_img_mask, mv_task_ids, mv_pose = [], [], [], [], []
+        mv_img_in, mv_img_mask, mv_task_ids, mv_pose = [], [], [], []
         for frame in frames:
             img_in, img_mask, task_ids, pose = self.__fetch_data(frame, obj_dir)
             mv_img_in.append(img_in)
