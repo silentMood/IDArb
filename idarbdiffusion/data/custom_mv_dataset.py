@@ -15,10 +15,6 @@ class CustomMVDataset(Dataset):
         object_list: list = None,
         use_cam: bool = False,
         ) -> None:
-        """Create a dataset from a folder of images.
-        If you pass in a root directory it will be searched for images
-        ending in ext (ext can be a list)
-        """
         self.root_dir = root_dir
         self.num_views = num_views
         self.use_cam = use_cam

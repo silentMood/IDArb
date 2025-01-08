@@ -542,7 +542,6 @@ class BasicDRTransformerBlock(nn.Module):
 
         cross_attention_kwargs = cross_attention_kwargs if cross_attention_kwargs is not None else {}
 
-        # import ipdb; ipdb.set_trace()
         if self.attn1_cd:
             attn_output = self.attn1(
                 norm_hidden_states,
@@ -695,7 +694,6 @@ class XFormersJointAttnProcessor:
     ):
         residual = hidden_states
 
-        # import ipdb; ipdb.set_trace()
         if attn.spatial_norm is not None:
             hidden_states = attn.spatial_norm(hidden_states, temb)
 

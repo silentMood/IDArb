@@ -13,10 +13,6 @@ class CustomDataset(Dataset):
         root_dir: str,
         object_list: list = None,
         ) -> None:
-        """Create a dataset from a folder of images.
-        If you pass in a root directory it will be searched for images
-        ending in ext (ext can be a list)
-        """
         self.root_dir = root_dir
         self.bg_color = np.array([1., 1., 1.], dtype=np.float32) # white
 

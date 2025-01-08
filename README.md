@@ -25,10 +25,11 @@ https://github.com/user-attachments/assets/b7305499-e596-4706-b888-5d3a29aca7b6
 
 - [x] Release inference code and pretrained checkpoints.
 - [x] Release training dataset.
-- [ ] Release training code.
+- [x] Release training code.
 
 ## News
 
+- [01.24] We have released the training code!
 - [12.24] We have released the complete [dataset](https://huggingface.co/lizb6626/IDArb) and rendering script.
 
 ## Install
@@ -60,6 +61,19 @@ python main.py --data_dir example/multi --output_dir output/multi --input_type m
 
 # With camera pose information
 python main.py --data_dir example/multi --output_dir output/multi --input_type multi --num_views 4 --cam
+```
+
+## Training
+
+### Dataset
+
+The training data consists of a combination of our Arb-Objaverse, ABO, and G-Objaverse datasets. You can access the [curated version](https://huggingface.co/datasets/lizb6626/Arb-Objaverse/tree/main/data). We are also working on releasing the uncurated version, which contains renderings of 347k 3D models.
+
+### Training Script
+
+To train the model, update the `dataset_root` in the configuration file `configs/train.yaml`. Then, run the following command:
+```
+accelerate launch --config_file configs/acc/8gpu.yaml train.py --config configs/train.yaml
 ```
 
 ## Acknowledgement
