@@ -562,6 +562,7 @@ def main(
                     mse_loss_weights = (
                         torch.stack([snr, cfg.snr_gamma * torch.ones_like(timesteps)], dim=1).min(dim=1)[0] / snr
                     )
+                    mse_loss_weights = torch.nan_to_num(mse_loss_weights, nan=1.0)
                     # We first calculate the original loss. Then we mean over the non-batch dimensions and
                     # rebalance the sample-wise losses with their respective loss weights.
                     # Finally, we take the mean of the rebalanced loss.
