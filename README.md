@@ -91,10 +91,12 @@ This project relies on many amazing repositories. Thanks to the authors for shar
 
 ## Citation
 ```
-@article{li2024idarb,
-  author    = {Li, Zhibing and Wu, Tong and Tan, Jing and Zhang, Mengchen and Wang, Jiaqi and Lin, Dahua},
-  title     = {IDArb: Intrinsic Decomposition for Arbitrary Number of Input Views and Illuminations},
-  journal   = {arXiv preprint arXiv:2412.12083},
-  year      = {2024},
+@inproceedings{
+li2025idarb,
+title={{IDA}rb: Intrinsic Decomposition for Arbitrary Number of Input Views and Illuminations},
+author={Zhibing Li and Tong Wu and Jing Tan and Mengchen Zhang and Jiaqi Wang and Dahua Lin},
+booktitle={The Thirteenth International Conference on Learning Representations},
+year={2025},
+url={https://openreview.net/forum?id=uuef1HP6X7}
 }
 ```
