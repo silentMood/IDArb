@@ -33,3 +33,4 @@ openexr
 pyexr
 lpips
 kornia
+triton==2.2.0
