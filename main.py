@@ -39,12 +39,12 @@ def load_pipeline():
     load pipeline from hub
     or load from local ckpts: pipeline = IDArbDiffusionPipeline.from_pretrained("./pipeckpts")
     """
-    text_encoder = CLIPTextModel.from_pretrained("lizb6626/IDArb", subfolder="text_encoder")
-    tokenizer = CLIPTokenizer.from_pretrained("lizb6626/IDArb", subfolder="tokenizer")
-    feature_extractor = CLIPImageProcessor.from_pretrained("lizb6626/IDArb", subfolder="feature_extractor")
-    vae = AutoencoderKL.from_pretrained("lizb6626/IDArb", subfolder="vae")
-    scheduler = DDIMScheduler.from_pretrained("lizb6626/IDArb", subfolder="scheduler")
-    unet = UNetDR2DConditionModel.from_pretrained("lizb6626/IDArb", subfolder="unet")
+    text_encoder = CLIPTextModel.from_pretrained("./pipeckpts", subfolder="text_encoder")
+    tokenizer = CLIPTokenizer.from_pretrained("./pipeckpts", subfolder="tokenizer")
+    feature_extractor = CLIPImageProcessor.from_pretrained("./pipeckpts", subfolder="feature_extractor")
+    vae = AutoencoderKL.from_pretrained("./pipeckpts", subfolder="vae")
+    scheduler = DDIMScheduler.from_pretrained("./pipeckpts", subfolder="scheduler")
+    unet = UNetDR2DConditionModel.from_pretrained("./pipeckpts", subfolder="unet")
     pipeline = IDArbDiffusionPipeline(
         text_encoder=text_encoder,
         tokenizer=tokenizer,
