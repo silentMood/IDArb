@@ -1,6 +1,7 @@
 import os
 os.environ["OPENCV_IO_ENABLE_OPENEXR"]="1"
-import cv2
+# import cv2
+from PIL import Image
 import json
 import gzip
 import numpy as np
@@ -204,13 +205,21 @@ class MVDataset(Dataset):
             img[...,-1] = -img[...,-1]
             return img
 
-        normald = cv2.imread(normal_path, cv2.IMREAD_UNCHANGED)
-        normald = normald.astype(np.float32)
-        normald = cv2.resize(normald, self.img_wh, interpolation=cv2.INTER_CUBIC)
-        normal = normald[...,:3]
-        normal_norm = (np.linalg.norm(normal, 2, axis=-1, keepdims= True))
-        normal = normal / normal_norm
+        img = Image.open(normal_path).convert('RGB')
+        img = img.resize(self.img_wh, Image.BICUBIC)
+        normald = np.asarray(img).astype(np.float32)
+        normald = normald[:, :, ::-1]  # RGB->BGR
+        normal_norm = (np.linalg.norm(normald, 2, axis=-1, keepdims= True))
+        normal = normald  / normal_norm
         normal = np.nan_to_num(normal,nan=-1.)
+
+        # normald = cv2.imread(normal_path, cv2.IMREAD_UNCHANGED)
+        # normald = normald.astype(np.float32)
+        # normald = cv2.resize(normald, self.img_wh, interpolation=cv2.INTER_CUBIC)
+        # normal = normald[...,:3]
+        # normal_norm = (np.linalg.norm(normal, 2, axis=-1, keepdims= True))
+        # normal = normal / normal_norm
+        # normal = np.nan_to_num(normal,nan=-1.)
 
         world_normal = unity2blender(normal)
 
@@ -243,15 +252,23 @@ class MVDataset(Dataset):
             '''
             img[...,0] = -img[...,0]
             return img
-
-        normald = cv2.imread(normal_path, cv2.IMREAD_UNCHANGED)
-        normald = normald.astype(np.float32)
-        normald = cv2.resize(normald, self.img_wh, interpolation=cv2.INTER_CUBIC)
-        normal = normald[...,::-1] / 255. * 2. - 1.
-
-        normal_norm = (np.linalg.norm(normal, 2, axis=-1, keepdims= True))
-        normal = normal / (normal_norm + 1e-6)
+        
+        img = Image.open(normal_path).convert('RGB')
+        img = img.resize(self.img_wh, Image.BICUBIC)
+        normald = np.asarray(img).astype(np.float32)
+        normald =  normald[...,::-1] / 255. * 2. - 1.  # RGB->BGR
+        normal_norm = (np.linalg.norm(normald, 2, axis=-1, keepdims= True))
+        normal = normald  / normal_norm
         normal = np.nan_to_num(normal,nan=-1.)
+
+        # normald = cv2.imread(normal_path, cv2.IMREAD_UNCHANGED)
+        # normald = normald.astype(np.float32)
+        # normald = cv2.resize(normald, self.img_wh, interpolation=cv2.INTER_CUBIC)
+        # normal = normald[...,::-1] / 255. * 2. - 1.
+
+        # normal_norm = (np.linalg.norm(normal, 2, axis=-1, keepdims= True))
+        # normal = normal / (normal_norm + 1e-6)
+        # normal = np.nan_to_num(normal,nan=-1.)
 
         img = blender2midas(normal)
         img = np.clip((img+1.)/2., 0., 1.)
@@ -279,15 +296,24 @@ class MVDataset(Dataset):
             img[..., 0] = -img_o[..., -1]
             img[..., -1] = img_o[..., 0]
             return img
-        
-        normald = cv2.imread(normal_path, cv2.IMREAD_UNCHANGED)
-        normald = normald.astype(np.float32)
-        normald = cv2.resize(normald, self.img_wh, interpolation=cv2.INTER_CUBIC)
-        normal = normald[...,::-1] * 2. - 1.
 
-        normal_norm = (np.linalg.norm(normal, 2, axis=-1, keepdims= True))
-        normal = normal / (normal_norm + 1e-6)
+        img = Image.open(normal_path).convert('RGB')
+        img = img.resize(self.img_wh, Image.BICUBIC)
+        normald = np.asarray(img).astype(np.float32)
+        # TODO
+        normald =  normald[...,::-1] * 2. - 1.  # RGB->BGR
+        normal_norm = (np.linalg.norm(normald, 2, axis=-1, keepdims= True))
+        normal = normald  / normal_norm
         normal = np.nan_to_num(normal,nan=-1.)
+        
+        # normald = cv2.imread(normal_path, cv2.IMREAD_UNCHANGED)
+        # normald = normald.astype(np.float32)
+        # normald = cv2.resize(normald, self.img_wh, interpolation=cv2.INTER_CUBIC)
+        # normal = normald[...,::-1] * 2. - 1.
+
+        # normal_norm = (np.linalg.norm(normal, 2, axis=-1, keepdims= True))
+        # normal = normal / (normal_norm + 1e-6)
+        # normal = np.nan_to_num(normal,nan=-1.)
 
         img = blender2midas(normal)
         img = np.clip((img+1.)/2., 0., 1.)
