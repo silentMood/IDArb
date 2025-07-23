@@ -1,5 +1,5 @@
 import numpy as np
-from scipy.ndimage import grey_erosion
+import cv2
 import torch
 import math
 from kornia.losses import ssim_loss
@@ -139,8 +139,7 @@ def erode_mask(mask):
     kernel = np.ones((5, 5), np.uint8)
     out_mask = []
     for m in mask:
-        m = grey_erosion(m, structure=kernel)
-        # m = cv2.erode(m, kernel)
+        m = cv2.erode(m, kernel)
         out_mask.append(m)
     out_mask = np.stack(out_mask, axis=0)
     out_mask = (out_mask > 127).astype(np.float32)

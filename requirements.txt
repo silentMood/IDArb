@@ -18,8 +18,6 @@ einops
 ftfy
 piq
 matplotlib
-# opencv-python
-Pillow
 imageio
 imageio-ffmpeg
 scipy
