@@ -10,9 +10,10 @@ nerfacc==0.3.3
 trimesh==3.9.8
 pyhocon==0.3.57
 icecream==2.1.0
-PyMCubes==0.1.2
+PyMCubes==0.1.6
 accelerate==1.0.1
 huggingface-hub==0.26.5
+numpy==1.26.4
 modelcards
 einops
 ftfy
